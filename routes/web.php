@@ -20,8 +20,20 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/listing/{id}', function($id){
+// Route::get('/listing/{id}', function($id){
+//     $listing = Listing::find($id);
+
+//     if($listing){
+//         return view('listing',[
+//             'listing' => Listing::find($id)
+//        ]);
+//     }else{
+//         abort('404');
+//     }
+// });
+
+Route::get('/listing/{listing}', function(Listing $listing){
     return view('listing',[
-        'listing' => Listing::find($id)
+        'listing' => $listing
     ]);
 });
