@@ -21,4 +21,6 @@ class Listing extends Model
                 ->orWhere('tags', 'like', '%' . request('search') . '%');
         }
     }
+
+    protected $fillable = ['title', 'company', 'location', 'website', 'email', 'description', 'tags'];
 }

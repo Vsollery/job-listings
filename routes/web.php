@@ -14,7 +14,7 @@ use App\Http\Controllers\ListingController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//Get all Listings
 Route::get('/', [ListingController::class, 'index']);
 
 // Route::get('/listing/{id}', function($id){
@@ -29,4 +29,9 @@ Route::get('/', [ListingController::class, 'index']);
 //     }
 // });
 
-Route::get('/listing/{listing}', [ListingController::class, 'show']);
+//Show create form
+Route::get('/listings/create',[ListingController::class,'create']);
+//Store Listing Data
+Route::post('/listings',[ListingController::class,'store']);
+//Show single Listings
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
