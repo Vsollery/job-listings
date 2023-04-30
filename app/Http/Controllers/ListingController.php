@@ -12,7 +12,7 @@ class ListingController extends Controller
     public function index(){
         //dd(request()->tags);
         return view('listings.index',[
-            'listings' => Listing::latest()->filter(request(['tags']))->get()
+            'listings' => Listing::latest()->filter(request(['tags', 'search']))->get()
         ]);
     }
     //Show Single Listing
