@@ -22,5 +22,5 @@ class Listing extends Model
         }
     }
 
-    protected $fillable = ['title', 'company', 'location', 'website', 'email', 'description', 'tags'];
+    //protected $fillable = ['title', 'company', 'location', 'website', 'email', 'description', 'tags'];
 }
