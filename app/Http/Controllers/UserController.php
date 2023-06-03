@@ -55,7 +55,8 @@ class UserController extends Controller
             return redirect('/')->with('message', 'User logged in');
         }
 
-        return back()->with('message', 'Login Failed.');
+        // return back()->with('message', 'Login Failed.');
+        return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
 
     }
 }
