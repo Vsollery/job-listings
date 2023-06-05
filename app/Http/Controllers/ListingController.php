@@ -18,8 +18,15 @@ class ListingController extends Controller
     }
     //Show Single Listing
     public function show(Listing $listing){
+        $flag = 1;
+        
+            if($listing->user_id != auth()->id()){
+                $flag = 0;
+            }
+
         return view('listings.show',[
-            'listing' => $listing
+            'listing' => $listing,
+            'flag' => $flag
         ]);
     }
     //Show Create Form
@@ -52,15 +59,24 @@ class ListingController extends Controller
     }
 
     public function edit(Listing $listing){
+        $flag = 1;
+        if($listing->user_id != auth()->user()->id){
+            $flag = 0;
+            abort(403, 'Unautharized action');
+        }
+
         return view('listings.edit',[
-            'listing' => $listing
+            'listing' => $listing,
+            'flag' => $flag
         ]);
     }
 
     public function update(Request $request, Listing $listing){
 
         //Make sure logged in owner is user
+        $flag = 1;
         if($listing->user_id != auth()->user()->id){
+            $flag = 0;
             abort(403, 'Unautharized action');
         }
 
